@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>test-defineProperty</title>
+</head>
+<body>
+<input type="text" id="input" oninput="bind(this.value)"><br>
+name<span id="name"></span><br>
+age<span id="age"></span><br>
+sex<span id="sex"></span><br>
+<script>
+  var book = {name: '', author1: {age: '1', sex: 'man'}, author2: {age: '2'}}
+
+  /*Object.defineProperty(book,"name",{
+    value: 'js',
+    enumerable: true
+  })
+  var t;
+  Object.defineProperty(book,'name',{
+    get () {
+      //console.log('get:'+book.name)
+      return t
+    },
+    set (v) {
+      t=v
+      //console.log('get:'+book.name)
+    }
+  })*/
+  Object.defineProperty(book, 'name', {
+    set (v) {
+      document.getElementById('name').innerText = v
+    }
+  })
+  Object.defineProperty(book.author1, 'age', {
+    set (v) {
+      console.log('new:' + v)
+      console.log('set:' + book.author1.age)
+      //document.getElementById('age').innerText = v
+    }
+  })
+
+  function bind (value) {
+    book.author1.age = value
+  }
+</script>
+</body>
+</html>

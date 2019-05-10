@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+ <div id="app">
+   <input type="checkbox" value="tom" v-model="checkbox">tom
+   <input type="checkbox" value="jack" v-model="checkbox">jack<br>
+   <span>checkbox:{{checkbox}}</span><br>
+   <input type="radio" id="qw" value="one" v-model="pick">one
+   <input type="radio" id="qwe" value="two" v-model="pick">two<br>
+   <span>radio:{{pick}}</span>
+
+ </div>
+<script>
+  var app=new Vue({
+    el:"#app",
+    data:{
+      checkbox:[],
+      pick:''
+    },
+    watch:{
+      pick: function (val) {
+        alert('pick change:' +val)
+      }
+    }
+  })
+</script>
+</body>
+</html>

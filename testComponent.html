@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <!--  <button-counter/>-->
+  <!--  <br>-->
+  <!--  <blog-post v-for="blog in blogs" v-bind:key="blog.title" v-bind:ti-tle="blog.title"></blog-post>-->
+  <button v-for="tab in tabs" v-bind:key="tab" v-on:click="currentTab=tab">{{tab}}</button>
+  <component v-bind:is="currentTab"/>
+</div>
+<script>
+  Vue.component('button-counter', {
+    data: function () {
+      return {
+        count: 0
+      }
+    },
+    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+  })
+
+  Vue.component('blog-post', {
+    props: ['tiTle'],
+    template: '<h3>{{ tiTle }}</h3>'
+  })
+
+  function Book (bookname, descritpion) {
+    this.bookname = bookname
+    this.descritpion = descritpion
+  }
+
+  Vue.component('home', {
+    props: {
+      books: Array
+    },
+    template: '<div>' +
+      '<ul><li v-for="book in books" v-bind:key="book.bookname">{{book.bookname}}</li></ul>' +
+      '</div>'
+  })
+
+  Vue.component('index', {
+    template: '<div>index</div>'
+  })
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      blogs: [
+        {title: 'My journey with Vue'},
+        {title: 'Blogging with Vue'},
+        {title: 'Why Vue is so fun'},
+      ],
+      tabs: [
+        'home', 'index'
+      ],
+      currentTab: 'home'
+    }
+  })
+</script>
+</body>
+</html>

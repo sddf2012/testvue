@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test-lifecycle</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <h1>outer 消息:{{message}}</h1>
+</div>
+<script>
+  var vue=new Vue({
+     el:'#app',
+    data: {
+      message: '这是个消息'
+    },
+    template: '<h1>template 消息:{{message}}</h1>',
+    beforeCreate: function () {
+      console.log('------beforeCreate')
+      console.log('this.$el:' +this.$el)
+      console.log('this.$data:' +this.$data)
+    },
+    created:function () {
+      console.log('------created')
+      console.log('this.$el:' +this.$el)
+      console.log('this.$data:' +this.$data)
+    },
+    beforeMount:function () {
+      console.log('------beforeMount')
+      console.log('this.$el:' +this.$el)
+      console.log(this.$el)
+      console.log('this.$data:' +this.$data)
+    },
+    mounted:function () {
+      console.log('------mounted')
+      console.log('this.$el:' +this.$el)
+      console.log(this.$el)
+      console.log('this.$data:' +this.$data)
+    },
+    beforeDestroy:function () {
+      console.log('------beforeDestroy')
+      console.log('this.$el:' +this.$el)
+      console.log('this.$data:' +this.$data)
+    },
+    destroyed:function () {
+      console.log('------destroyed')
+      console.log('this.$el:' +this.$el)
+      console.log('this.$data:' +this.$data)
+    },
+    beforeUpdate:function () {
+      console.log('------beforeUpdate')
+      console.log('this.$el:' +this.$el)
+      console.log('this.$data:' +this.$data)
+    },
+    updated:function () {
+      console.log('------updated')
+      console.log('this.$el:' +this.$el)
+      console.log('this.$data:' +this.$data)
+    },
+  })
+
+</script>
+</body>
+</html>
